@@ -46,4 +46,35 @@ public abstract class ArbolBin {
 
     // proceso recursivo
     public abstract void add(Nodo nuevo);
+
+    /**
+     * Método para mostrar un árbol binario
+     * @param root nodo raíz donde iniciara el recorrido del árbol.
+     * @param space espacio adicional para la separación de cada nodo.
+     */
+    public static void printTree(Nodo root, int space) {
+        //fuente: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+        final int COUNT = 10;
+        if (root == null)
+            return;
+
+        space += COUNT;
+        printTree(root.der, space);
+
+        System.out.print("\n");
+        for (int i = COUNT; i < space; i++)
+            System.out.print(" ");
+        System.out.print(root.valor + "\n");
+
+        printTree(root.izq, space);
+
+    }
+
+    /**
+     * Método que muestra el árbol binario sin agregar espacios extra.
+     * @param root nodo raíz donde iniciara el recorrido del árbol.
+     */
+    public static void printTree(Nodo root){
+        printTree(root, 0);
+    }
 }
